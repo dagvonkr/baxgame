@@ -1,0 +1,27 @@
+**/*.sw[op]
+
+.env
+
+*.tar.gz
+
+# Logs
+logs
+*.log
+
+# Coverage directory used by tools like istanbul
+coverage
+
+
+# Directories:
+backups
+
+bower_components
+bower.json
+
+Gruntfile.js
+
+node_modules
+
+package.json
+
+*sublime-*
