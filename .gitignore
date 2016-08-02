@@ -21,7 +21,14 @@ bower.json
 Gruntfile.js
 
 node_modules
+npm-debug.log
 
 package.json
+
+
+database.rules.json
+firebase.json
+package.json
+.firebaserc
 
 *sublime-*

@@ -1,0 +1,47 @@
+<div ng-controller="mainCtrl">
+
+<div class="highscores">
+  <h3> HIGHSCORE </h3>
+  <div ng-repeat="score in scores.slice().reverse()" class=""> {{score.name}}
+  <strong>{{score.score}} </strong>
+  <br>
+  </div>
+</div>
+
+<div class="wrapper">
+
+  <span id="timer">50</span>
+
+  <span id="status">Trykk for å begynne!</span>
+
+  <button class="start-button">
+  <img src="assets/bax-knapp.svg" alt="Button is missing! Please report us!" class="start-button-svg">
+  </button>
+  <br>
+
+  <div class="counter-animation"> <span id="buttonCounter">0 </span></div>
+  <br>
+  <div id="timer" class="demo"></div>
+  <br>
+  <div ng-click="tryAgain()" class="try-again">
+    <img class="try-again-img" src="../assets/tryagain.png" alt="Try again!" >
+  </div>
+  <br>
+  <div ng-click="submitScore()" class="submit-score">
+    <img class="submit-score-img" src="../assets/submit.png" alt="Submit score">
+  </div>
+
+</div>
+
+
+
+  <form ng-submit="addScore()" class="submit-form">
+    <input ng-model="name" type="text" placeholder="Navn" class="submit-form-input"/>
+    <br>
+    <input ng-model="email" type="email" placeholder="E-post" class="submit-form-input"/>
+    <div ng-model="score" class=""></div>
+    <button type="submit" class="submit-form-button"> Send inn! </button>
+  </form>
+
+</div>
+
