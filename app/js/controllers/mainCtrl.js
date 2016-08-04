@@ -6,31 +6,54 @@ app.controller('mainCtrl', function($scope, $firebaseArray) {
 
 
 
-
   // global firebase url
   // var ref = new Firebase('https://baxgame.firebaseio.com/scores');
 
   var ref = firebase.database().ref();
-
   var query = ref.orderByChild("score").limitToLast(40);
+  var rank = ref.orderByChild("score");
 
   $scope.scores = $firebaseArray(query);
 
-
-   console.log('rankList', ref);
-
-
-  ref.on("value", function(snapshot) {
-    console.log(snapshot.val());
-  }, function (errorObject) {
-    console.log("The read failed: " + errorObject.code);
-  });
 
 
   //fastclick.js
   $(function() {
     FastClick.attach(document.body);
   });
+
+
+      // on load:
+  $( document ).ready(function() {
+
+    //Modal on load
+    var appendthisOnload =  ("<div class='modal-overlay-onload js-modal-close-onload'></div>");
+
+      $('a[data-modal-id-onload]').on(function(e) {
+        e.preventDefault();
+        $("body").append(appendthisOnload);
+        $(".modal-overlay-onload").fadeTo(250, 0.7);
+        //$(".js-modalbox").fadeIn(500);
+
+        var modalBoxOnload = $(this).attr('data-modal-id-onload');
+        $('#'+modalBoxOnload).fadeIn($(this).data());
+      });
+    $(".js-modal-close-onload, .modal-overlay-onload").click(function() {
+        $(".modal-box-onload, .modal-overlay-onload").fadeOut(150, function() {
+            $(".modal-overlay-onload").remove();
+        });
+    });
+    $(window).resize(function() {
+        $(".modal-box-onload").css({
+            top: ($(window).height() - $(".modal-box-onload").outerHeight()) / 2,
+            left: ($(window).width() - $(".modal-box-onload").outerWidth()) / 2
+        });
+    });
+    $(window).resize();
+
+  });
+
+
 
 
   $.fn.jQuerySimpleCounter = function( options ) {
@@ -56,6 +79,11 @@ app.controller('mainCtrl', function($scope, $firebaseArray) {
   };
 
 
+
+
+
+
+
   // counter game
   var running = false,
   count = 0,
@@ -65,30 +93,72 @@ app.controller('mainCtrl', function($scope, $firebaseArray) {
   var submitFormIsClicked = false
   $(".try-again").hide();
   $(".submit-score").hide();
+
+  $(".modal-box-simple").hide();
   $(".submit-form").hide();
+  $(".modal-buttons").hide();
+  $(".yourRank").hide();
+
+
+
 
   var end_counter = function() {
     if (running) {
-        running = false;
-        $("#status").text("Tiden er ute!");
-        $('.start-button').attr("disabled", true); // endre til try again
-        // started_at = 0;
-        $(".try-again").show();
-        $(".submit-score").show();
+      running = false;
+      $("#status").text("Tiden er ute!");
+      $('.start-button').attr("disabled", true); // endre til try again
+      // started_at = 0;
+      // $(".try-again").show();
+      // $(".submit-score").show();
+
+      // Dette er modal ting:
+      $(".modal-box-simple").show();
+      $(".submit-score").show(); // dette er dårlig: at denne ligger under modal-buttons
+      $(".modal-buttons").show();
+
+
+       // // popup script try again
+       //  var appendthis =  ("<div class='modal-overlay js-modal-close'></div>");
+       //  console.log('Modal hit!');
+       //  $("body").append(appendthis);
+       //  $(".modal-overlay").fadeTo(250, 0.7);
+       //  //$(".js-modalbox").fadeIn(500);
+       //  var modalBox = $(this).attr('data-modal-id');
+       //  $('#'+modalBox).fadeIn($(this).data());
+
+       //  $(".js-modal-close, .modal-overlay").click(function() {
+       //      $(".modal-box, .modal-overlay").fadeOut(150, function() {
+       //          $(".modal-overlay").remove();
+       //      });
+       //  });
+       //  $(window).resize(function() {
+       //      $(".modal-box").css({
+       //          top: ($(window).height() - $(".modal-box").outerHeight()) / 2,
+       //          left: ($(window).width() - $(".modal-box").outerWidth()) / 2
+       //      });
+       //  });
+       //  $(window).resize();
+
+
     }
   };
 
   $scope.tryAgain = function() {
     $('.start-button').attr("disabled", false);
-    $("#status").text("Trykk for å begynne!");
+    $("#status").text("TRYKK FOR Å BEGYNNE!");
     $("#timer").text("50");
     $(".submit-score").hide();
     $(".submit-form").hide();
+    $(".yourRank").hide();
     $("#buttonCounter").text("0");
+    $scope.yourRank = ''
 
     $(".try-again").hide();
     count = 0;
     countTime = 500;
+
+
+
   }
 
 
@@ -103,37 +173,50 @@ app.controller('mainCtrl', function($scope, $firebaseArray) {
       email: $scope.email,
       score: count
     }).then(function(res){
-      console.log('Res--->', res.path.o)
 
-      var yourRankId = res.path.o;
-      var rankList = $firebaseArray(ref);
+      $(".try-again-modal").show();
+      $(".yourRank").show();
 
-      console.log('var rankList', rankList.length);
+      var yourRankIdTemp = res.path.o;
+      var yourRankId = yourRankIdTemp[0];
+      var scoresObj = $firebaseArray(rank);
 
-      for (var i = 0; i < rankList.length; i++ ) {
-        if (rankList[i] === youRankId) {
-          console.log('Match--> ', rankList[i]);
+      scoresObj.$loaded().then(function(scores) {
+        var scoresArr = scores.reverse();
+
+        for (var i = 0; i < scoresArr.length; i++ ) {
+
+          var scoreArrToStr = scoresArr[i].$id;
+          var scoreIdStr = JSON.stringify(scoreArrToStr);
+
+          var yourRankIdStr = JSON.stringify(yourRankId);
+
+        if (scoreIdStr === yourRankIdStr) {
+          $scope.yourRank = i + 1;
+          console.log('Rank-->', $scope.yourRank);
+          break;
         }
         else {
-          console.log('Nothing found');
+          console.log('Nothing found! :(');
         }
       }
-
+      });
     });
 
     //resetting form
-    $scope.name = '';
-    $scope.email = '';
-    $scope.score = '';
+    // $scope.name = '';
+    // $scope.email = '';
+    // $scope.score = '';
 
 
     // super hack der jeg gjentar tryAgain() funksjonen:
-    $('.start-button').attr("disabled", false);
     $("#status").text("Trykk for å begynne!");
     $("#timer").text("50");
     $(".submit-score").hide();
     $(".submit-form").hide();
     $("#buttonCounter").text("0");
+    $(".modal-buttons").show();
+
 
     $(".try-again").hide();
     count = 0;
@@ -157,7 +240,7 @@ app.controller('mainCtrl', function($scope, $firebaseArray) {
         end:    -1,
         duration: 5000
       });
-      $("#status").text("Go go go!");
+      $("#status").text("TRYKK TRYKK TRYKK!");
       $(".try-again").hide();
       $(".start-button-svg").stop().css({scale: '1,01'});
 
@@ -190,6 +273,7 @@ app.controller('mainCtrl', function($scope, $firebaseArray) {
       $(this).stop().transition({scale: '0.98'}, 50, 'ease-in-out');
     });
 
+    $(".modal-buttons").hide();
 
   }
 

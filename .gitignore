@@ -15,11 +15,10 @@ coverage
 # Directories:
 backups
 
+assets
 bower_components
 bower.json
-
 Gruntfile.js
-
 node_modules
 npm-debug.log
 
