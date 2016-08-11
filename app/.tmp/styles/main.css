@@ -1,13 +1,19 @@
 html, body {
+  overflow-x: hidden;
   width: 100%;
   margin: 0;
   padding: 0;
-  height: 100%;
+  max-height: 1400px;
   font-family: 'Calibri-normal';
   touch-action: manipulation;
 
   background: #6B3A94;
 
+}
+
+a {
+  color: #fff;
+  text-decoration: none;
 }
 
 
@@ -30,12 +36,6 @@ html, body {
 table{
   border-collapse: collapse;
 
-}
-
-th, td {
-  width: 100px;
-  margin-bottom: -10px;
-  padding: 10px;
 }
 
 
@@ -104,127 +104,229 @@ button:focus {outline:0;}
 
 
 .wrapper {
-
-
   width: 100%;
-  text-align: center;
-  margin-top: 30px;
+
+  -webkit-touch-callout: none; /* iOS Safari */
+  -webkit-user-select: none;   /* Chrome/Safari/Opera */
+  -khtml-user-select: none;    /* Konqueror */
+  -moz-user-select: none;      /* Firefox */
+  -ms-user-select: none;       /* Internet Explorer/Edge */
+  user-select: none;           /* Non-prefixed version, currently
+                                  not supported by any browser */
+}
+
+/*For sentrering, må margin-left
+ være halvparten av width*/
+.game-graphic-wrapper{
+  z-index: 10;
+}
+.game-graphic-counter-img{
+  position: absolute;
+  width: 550px;
+  left: 50%;
+  margin-left: -275px;
+}
+
+.game-graphic-button-img{
+  position: absolute;
+  width: 250px;
+  left: 50%;
+  margin-left: -125px;
+  margin-top: 500px;
 }
 
 .counter-wrapper {
-  z-index: 1000;
-}
-
-.board-photo{
   position: absolute;
-  z-index: 0;
+  z-index: 1000;
+
+  font-family: 'digital-7';
+  font-size: 115px;
+  text-align: center;
+  width: 200px;
+  left: 50%;
+  margin-left: -100px;
+  margin-top: 50px;
 }
 
-.board-photo-img{
-  z-index: 0;
-  width: 600px;
-  margin-left: 200px;
-  margin-top: -400px;
-}
 
 .timer{
   z-index: 1000;
-  font-family: 'digital-7';
   display: block;
-  margin-top: 50px;
-  font-size: 125px;
+  margin-top: 98px !important;
   color: #FA0303;
-  background: rgba(45, 35, 35, .85);
-  width: 125px;
-  margin: 0 auto;
+/*  background: rgba(45, 35, 35, .85);
   border: 5px solid #473737;
-  border-style:inset;
+  border-style:inset;*/
 }
 
 .board-text{
+  font-family: 'Calibri-normal';
   z-index: 1000;
-  color: #fff;
-  font-size: 30px;
+  color: #000;
+  font-size: 25px;
   opacity: 0.8;
-  margin-bottom: 30px;
+  margin-bottom: 28px;
   letter-spacing: 2px;
 }
 
+
+
 .counter-animation{
+
 
 }
 
 #buttonCounter{
   z-index: 1000;
-  font-family: 'digital-7';
   display: block;
-  margin-top: 50px;
-  font-size: 100px;
+  margin-top: -22px !important;
   color: #FA0303;
-  background: rgba(45, 35, 35, .85);
-  width: 100px;
-  margin: 0 auto;
-  border: 5px solid #473737;
-  border-style:inset;
-
 }
 
 #status {
-  display: block;
-  font-family: 'Calibri-bold';
-  opacity: .8;
-  font-size: 30px;
+  position: absolute;
+  opacity: .95;
+  font-size: 16px;
   color: #fff;
-  margin-top: 30px;
+  margin-top: 750px;
+  text-align: center;
+  width: 250px;
+  left: 50%;
+  margin-left: -125px;
 }
 
 .start-button{
-  background: rgba(54, 25, 25, .0);
-  margin-top: 30px;
-  border-radius: 50%;
-  width: 300px;
-  height: 300px;
+  background: none;
   border: none;
+}
+
+.start-button-img {
+  position: absolute;
   cursor: pointer;
+  /*For sentrering, må margin-left
+ være halvparten av width*/
+  left: 50%;
+  margin-left: -75px;
+  width: 150px;
+  margin-top: 560px;
+  -webkit-filter: drop-shadow(0px 0px 5px #9d9d9d);
+  filter: drop-shadow(0px 0px 5px #9d9d9d);
 }
 
-
-
-.start-button-svg {
--webkit-filter: drop-shadow(0px 0px 5px #9d9d9d);
-filter: drop-shadow(0px 0px 5px #9d9d9d);
-}
-
-.start-button-svg:active {
+.start-button-img:active {
   -webkit-filter: drop-shadow(0px 0px 5px #d9d9d9);
   filter: drop-shadow(0px 0px 5px #d9d9d9);
 }
 
+
+
 .try-again{
-  position: absolute;
-  left: 34%;
-  cursor: pointer;
-  margin-top: -55px;
+
 }
 .try-again-img{
   cursor: pointer;
-  width: 200px;
+  position: absolute;
+  text-align: center;
+
+  width: 30%;
+
+  left: 30%;
+  transform: translate(-50%);
+
+  margin-top: 25%;
+}
+
+.try-again-img-submited{
+  position: absolute;
+  width: 150px;
+  left: 50%;
+  margin-left: -75px;
+  margin-top: 70px;
+}
+
+.submit-score-img{
+  cursor: pointer;
+  position: absolute;
+  text-align: center;
+
+  width: 30%;
+
+  left: 70%;
+  transform: translate(-50%);
+
+  margin-top: 27%;
 }
 
 .modal-box-simple{
-  /*display: none;*/
   position: absolute;
-  z-index: 1000;
-  width: 40%;
-  height: 300px;
-  background: #5f4b70;
+  z-index: 2000;
+  width: 60%;
+  height: 600px;
+  /*the trick that makes absolute position centered*/
+  left: 50%;
+  transform: translate(-50%);
+  margin-top: 150px;
+  background: #e5c6c3;
   border-radius: 4px;
-  box-shadow: 0 3px 9px rgba(0, 0, 0, 0.5);
-  border: 1px solid rgba(0, 0, 0, 0.1);
+  box-shadow: 0 3px 9px rgba(0, 0, 40, 0.5);
+  border: 1px solid rgba(0, 0, 40, 0.1);
   background-clip: padding-box;
+  opacity: .98;
 }
 
-.modal-box {
+.modal-box-onload-mobile{
+  position: absolute;
+  z-index: 2000;
+  width: 80%;
+  /*the trick that makes absolute position centered*/
+  left: 50%;
+  transform: translate(-50%);
+
+
+  height: 500px;
+
+  margin-top: 10%;
+
+  background: #e5c6c3;
+  border-radius: 4px;
+  box-shadow: 0 3px 9px rgba(0, 0, 40, 0.5);
+  border: 1px solid rgba(0, 0, 40, 0.1);
+  background-clip: padding-box;
+  opacity: .98;
+}
+
+.play-game-img{
+  position: absolute;
+  cursor: pointer;
+  width: 150px;
+  margin-top: 7%;
+  left: 50%;
+  transform: translate(-50%);
+}
+
+
+.modal-buttons{
+  display: inline-block;
+  cursor: pointer;
+  display: block;
+  color: #ede8f1;
+  font-size: 40px;
+  margin-top: 50px;
+}
+
+.try-again-modal{
+  margin-right: 200px;
+  margin-top: 200px;
+  font-size: 30px;
+}
+
+.submit-score{
+  margin-left: 200px;
+  margin-top: -55px;
+  font-size: 30px;
+}
+
+/*.modal-box {
   display: none;
   position: absolute;
   z-index: 1000;
@@ -235,19 +337,79 @@ filter: drop-shadow(0px 0px 5px #9d9d9d);
   box-shadow: 0 3px 9px rgba(0, 0, 0, 0.5);
   border: 1px solid rgba(0, 0, 0, 0.1);
   background-clip: padding-box;
-}
+}*/
 
 .modal-box-onload {
   position: absolute;
-  z-index: 1000;
-  width: 40%;
-  height: 300px;
-  background: #605866;
+  z-index: 2000;
+
+  width: 60%;
+  height: 600px;
+
+  /*the trick that makes absolute position centered*/
+  left: 50%;
+
+  margin-top: 0px;
+
+  background: #e5c6c3;
   border-radius: 4px;
   box-shadow: 0 3px 9px rgba(0, 0, 0, 0.5);
   border: 1px solid rgba(0, 0, 0, 0.1);
   background-clip: padding-box;
+  opacity: .98
 }
+
+.hele-norges-modal {
+  position: absolute;
+  margin-top: 85px;
+  width: 70%;
+  left: 50%;
+  transform: translate(-50%);
+  margin-left: 0px;
+}
+
+.hele-norges-modal-mobile {
+  position: absolute;
+  margin-top: 50px;
+  width: 75%;
+  left: 50%;
+  transform: translate(-50%);
+  margin-left: 0px;
+}
+
+.modal-desktop-info{
+  font-family: 'Calibri-bold';
+  color: #5c277a;
+  font-size: 20px;
+  width: 80%;
+  margin: 0 auto;
+  margin-top: 250px;
+}
+
+.baxlogo-desktop{
+  margin-top: 30px;
+  display: block;
+  width: 100px;
+
+}
+
+.modal-desktop-info-mobile{
+  font-family: 'Calibri-bold';
+  color: #5c277a;
+  font-size: 18px;
+  width: 80%;
+  margin: 0 auto;
+  margin-top: 30%;
+
+}
+
+.start-spillet {
+  color: #fff;
+  text-decoration: none;
+  font-size: 30px;
+  margin-top: 150px;
+}
+
 
 .close-x {
   float: right;
@@ -257,7 +419,7 @@ filter: drop-shadow(0px 0px 5px #9d9d9d);
   margin-top: 10px;
 }
 
-.submit-score{
+/*.submit-score{
   position: absolute;
   left: 52%;
   cursor: pointer;
@@ -267,17 +429,17 @@ filter: drop-shadow(0px 0px 5px #9d9d9d);
 .submit-score-img{
   cursor: pointer;
   width: 200px;
-}
+}*/
 
 .submit-form {
   text-align: center;
-  margin-top: 50px;
+  margin-top: 150px;
 }
 
 .submit-form-input {
   background-color: #F7F8F9;
   width: 200px;
-  height: 30px;
+  height: 35px;
   border: none;
   color: #5f4b70;
   font-size: 20px;
@@ -304,20 +466,487 @@ filter: drop-shadow(0px 0px 5px #9d9d9d);
 }
 
 .highscores {
-  position: absolute;
+  position: relative;
   text-transform: uppercase;
-  margin-top: 0px;
+  margin-top: 800px;
   color: #fff;
-  right: 150px;
   word-break: break-all;
+  width: 300px;
+  left: 50%;
+  margin-left: -150px;
+}
+
+
+td.highscores-header {
+  font-size: 16px;
+  text-align: center;
+  width: 65px;
+  color: #fff;
+}
+
+td.highscores-row {
+  text-align: center;
+  font-size: 14px;
+  width: 40px;
+  padding: 10px;
+  color: #fff;
+  opacity: .8;
 }
 
 td.th-name{
-  width: 300px;
+  text-align: left;
+  width: 200px;
 }
+
+.goto-top100{
+  text-align: center;
+  margin-top: 20px;
+}
+
 
 .yourRank {
   position: absolute;
-  float: left;
-  margin-left: 100px;
+  text-align: center;
+  font-family: 'Calibri-bold';
+  color: #6B3A94;
+  font-size: 30px;
+
+  transform: translate(-50%);
+  width: 75%;
+  left: 50%;
+
+  margin-top: 175px;
+
+}
+
+.yourPoints{
+  position: absolute;
+  text-align: center;
+  color: #6B3A94;
+  font-size: 30px;
+  font-family: 'Calibri-bold';
+
+  width: 75%;
+  left: 50%;
+  transform: translate(-50%);
+  margin-left: 0px;
+}
+
+.close-simple-modal{
+  cursor: pointer;
+  font-size: 20px;
+  color: #fff;
+  float: right;
+  padding: 4px 10px 10px 10px;
+}
+
+.info:hover{
+  opacity: .7;
+}
+
+.info-img {
+  position: relative;
+  width: 40px;
+  margin-top: 40px;
+  bottom: 20px;
+  left: 20px;
+}
+
+/*INFO*/
+
+/*SUB SIDE INFO*/
+
+.hele-norges{
+  position: relative;
+  margin-top: 50px;
+  width: 50%;
+  left: 50%;
+  transform: translate(-50%);
+}
+
+.info-sub{
+  color: #fff;
+  padding: 20px 100px 100px 100px;
+  font-size: 16px;
+}
+
+
+/*FINISH SUB SIDE INFO*/
+
+/*SUB SIDE HIGHSCORE*/
+
+.highscore-topp100{
+  position: relative;
+  width: 250px;
+  left: 50%;
+  margin-left: -125px;
+  margin-top: 50px;
+  margin-bottom: 50px;
+  text-align: center;
+}
+
+.highcore-topp100-wrapper{
+  width: 100%;
+  margin-bottom: 50px;
+}
+
+
+table.highscores-top100 {
+  font-size: 14px;
+  position: relative;
+  width: 80%;
+  margin: 0 auto;
+  text-transform: uppercase;
+  color: #fff;
+  word-break: break-all;
+  opacity: 0.9;
+}
+
+td.th-header{
+  opacity: 1 !important;
+  font-size: 16px;
+  padding: 10px 0px 10px 0px;
+}
+
+td.highscores-top100-small{
+  width: 100px;
+  text-align: center;
+}
+
+td.highscores-top100-name{
+  width: 70%;
+}
+/* FINISH SUB SIDE HIGHSCORE*/
+
+@media screen and (max-width: 1400px) {
+
+/*DESKTOP MODAL*/
+.modal-desktop-info{
+  font-size: 18px;
+  margin-top: 225px;
+}
+
+.baxlogo-desktop{
+  margin-top: 30px;
+  width: 100px;
+}
+
+
+
+/*START GAME*/
+
+/*For sentrering, må margin-left
+ være halvparten av width*/
+.game-graphic-counter-img{
+  width: 500px;
+  left: 50%;
+  margin-left: -250px;
+}
+
+.game-graphic-button-img{
+  width: 300px;
+  left: 50%;
+  margin-left: -150px;
+  margin-top: 425px;
+}
+
+.counter-wrapper {
+  font-size: 100px;
+  margin-top: 43px;
+}
+
+.start-button-img {
+  margin-top: 490px;
+/*  For sentrering, må margin-left
+  være halvparten av width*/
+  left: 50%;
+  margin-left: -85px;
+  width: 170px;
+}
+
+
+/* FINISH GAME*/
+
+#status {
+  font-size: 16px;
+  margin-top: 720px;
+}
+
+
+}
+
+@media screen and (max-width: 750px) {
+
+.highscores{
+  margin-top: 700px;
+}
+
+
+/*START MODALS*/
+
+.modal-box-onload {
+  width: 80%;
+  height: 650px;
+  /*half of width*/
+  left: 40%;
+}
+
+.modal-box-simple{
+/*  half of width*/
+  left: 50%;
+  transform: translate(-50%);
+  margin-left: 0px;
+  width: 80%;
+  height: 90%;
+  margin-top: 50px;
+}
+
+
+
+/*FINISH MODALS*/
+
+/*START GAME*/
+
+.game-graphic-wrapper{
+  margin-top: -30px;
+}
+
+/*For sentrering, må margin-left
+ være halvparten av width*/
+.game-graphic-counter-img{
+  width: 400px;
+  left: 50%;
+  margin-left: -200px;
+}
+
+.counter-wrapper {
+  font-size: 78px;
+  margin-top: 12px;
+}
+
+.game-graphic-button-img{
+  width: 300px;
+  left: 50%;
+  margin-left: -150px;
+  margin-top: 350px;
+}
+
+.start-button-img {
+  margin-top: 415px;
+}
+
+
+/* FINISH GAME*/
+
+#status {
+  font-size: 16px;
+  margin-top: 635px;
+}
+
+}
+
+
+@media screen and (max-width: 475px) {
+
+/*START MODAL*/
+
+.modal-box-onload {
+  width: 90%;
+  height: 700px;
+  /*half of width*/
+  left: 45%;
+}
+
+.modal-box-onload-mobile{
+  width: 90%;
+  /*the trick that makes absolute position centered*/
+  left: 50%;
+  transform: translate(-50%);
+  height: 500px;
+  margin-top: 15%;
+}
+
+.play-game-img{
+  position: absolute;
+  cursor: pointer;
+  width: 125px;
+  margin-top: 7%;
+  left: 50%;
+  transform: translate(-50%);
+}
+
+.modal-desktop-info-mobile{
+  font-size: 16px;
+  margin-top: 40%;
+}
+
+
+.modal-box-simple{
+  width: 90%;
+  height: 90%;
+  left: 50%;
+  transform: translate(-50%);
+  margin-left: 0px;
+  margin-top: 50px;
+}
+
+.try-again-img{
+  width: 150px;
+  left: 30%;
+  transform: translate(-50%);
+  margin-top: 100px;
+}
+
+.submit-score-img{
+  width: 150px;
+  left: 70%;
+  transform: translate(-50%);
+  margin-top: 110px;
+}
+
+
+
+/*FINISH MODAL*/
+
+
+#status {
+  font-size: 16px;
+  margin-top: 635px;
+}
+
+.hele-norges{
+  width: 75%;
+  left: 50%;
+  transform: translate(-50%);
+}
+
+.info-sub{
+  color: #fff;
+  padding: 20px 50px 50px 50px;
+  font-size: 14px;
+}
+
+}
+
+@media screen and (max-width: 420px) {
+
+.try-again-img{
+  width: 125px;
+}
+
+.submit-score-img{
+  width: 125px;
+
+}
+
+.modal-box-onload-mobile{
+  height: 450px;
+}
+
+
+}
+
+@media screen and (max-width: 380px) {
+
+.try-again-img{
+  width: 150px;
+  left: 50%;
+  transform: translate(-50%);
+  margin-top: 70px;
+}
+
+.submit-score-img{
+  width: 150px;
+  left: 50%;
+  transform: translate(-50%);
+  margin-top: 150px;
+}
+
+.try-again-img-submited{
+  margin-top: 50px;
+}
+
+.highscores{
+  margin-top: 625px;
+}
+
+}
+
+@media screen and (max-width: 380px) {
+
+/* START GAME*/
+.game-graphic-wrapper{
+  margin-top: -20px;
+}
+
+/*For sentrering, må margin-left
+ være halvparten av width*/
+.game-graphic-counter-img{
+  width: 320px;
+  left: 50%;
+  margin-left: -160px;
+}
+.counter-wrapper {
+  font-size: 62px;
+  margin-top: -12px;
+}
+
+.game-graphic-button-img{
+  width: 300px;
+  left: 50%;
+  margin-left: -150px;
+  margin-top: 275px;
+}
+
+.start-button-img {
+  margin-top: 340px;
+}
+
+
+.yourPoints{
+  margin-top: -30px;
+}
+
+table.highscores-top100 {
+  font-size: 14px;
+  width: 90%;
+}
+
+td.th-header{
+  opacity: 1 !important;
+  font-size: 14px;
+  padding: 10px 0px 10px 0px;
+}
+
+#buttonCounter{
+  margin-top: -26px !important;
+}
+
+.board-text{
+  font-size: 22px;
+}
+
+#status {
+  font-size: 16px;
+  margin-top: 555px;
+}
+
+
+}
+
+@media screen and (max-width: 325px) {
+
+
+
+.yourRank {
+  margin-top: 160px;
+}
+
+.timer{
+  margin-top: 100px !important;
+}
+
+
+
+
 }

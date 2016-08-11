@@ -2,46 +2,95 @@
 
 
 
-
-
 <div class="wrapper">
 
 
   <a href="#" data-modal-id-onload="modal2" class="js-open-modal-onload"> </a>
 
 
+<div ng-show="!isMobile()" class="show-desktop">
   <div id="modal2" class="modal-box-onload">
-    <div ng-click="tryAgain()">
-      <a href="#" class="js-modal-close-onload close-x">X</a>
-    </div>
-      <div ng-click="tryAgain()" class="try-again-modal">
-        <a href="#" class="js-modal-close-onload close-x">
-          Spill!
-        </a>
-      </div>
-  </div>
 
+      <img src="assets/helenorges.png" alt="HELE NORGES KNAPP" class="hele-norges-modal">
+
+      <div class="modal-desktop-info">
+        Velkommen!
+        <br>
+        <br>
+        Er du på jakt etter en jagerflytur, reise til Svalbard eller SmartHome-oppgradering av hjemmet ditt? Eller kanskje bare heder og ære? Da har du kommet til riktig sted, bare på feil plattform. Besøk akkurat den samme siden som du er inne på nå på mobilen din, og kanskje blir du historiens første Norgesmester i knappetrykking!
+        <br>
+        <br>
+        <br>
+        Hilsen Hele Norges Betalingssystem
+        <img src="assets/baxlogo.png" alt="HELE NORGES KNAPP" class="baxlogo-desktop">
+      </div>
+
+
+
+  </div>
+</div>
+
+<div ng-show="isMobile()" class="show-mobile">
+  <div id="modal2" class="modal-box-onload-mobile">
+    <div ng-click="tryAgain()">
+      <div ng-click="tryAgain()" class="close-simple-modal"> x </div>
+    </div>
+
+      <img src="assets/helenorges.png" alt="HELE NORGES KNAPP" class="hele-norges-modal-mobile">
+
+      <div class="modal-desktop-info-mobile">
+        Velkommen!
+        <br>
+        <br>
+        Trykk så mange ganger du klarer på knappen i løpet av 30 sekunder. De tre beste trykkerne vinner opplevelsesreise til Svalbard, SmartHome-oppgradering av hjemmet eller en tur i jagerfly! Du er også automatisk med i trekningen av kinobilletter!
+
+      </div>
+
+        <div ng-click="tryAgain()" class="close-simple-modal">
+          <img src="assets/play.png" alt="Try again!" class="play-game-img">
+        </div>
+  </div>
+</div>
+
+
+
+<!--   <button ng-click="isMobile()"> CLICK</button> -->
+
+
+
+  <!-- MODAL BOX SIMPLE - TRY AGAIN-->
   <div class="modal-box-simple">
 
+    <img src="assets/helenorges.png" alt="HELE NORGES KNAPP" class="hele-norges-modal-mobile">
 
-    <div ng-click="tryAgain()">
-      <a href="#" class="js-modal-close close-x">CLOSE</a>
-    </div>
+    <div ng-click="tryAgain()" class="close-simple-modal"> x </div>
 
-    <form ng-submit="addScore()" class="submit-form">
-      <input ng-model="name" type="text" placeholder="Navn" class="submit-form-input"/>
+    <form name="form" ng-submit="addScore(form)" class="submit-form">
+      <input ng-model="name" type="text" name="name" placeholder="Navn" class="submit-form-input" maxlength="50" ng-required="true" />
       <br>
-      <input ng-model="email" type="email" placeholder="E-post" class="submit-form-input"/>
+      <input ng-model="email" type="email" name="email" placeholder="E-post" class="submit-form-input" maxlength="50" ng-required="true"/>
       <div ng-model="score" class=""></div>
-      <button type="submit" class="submit-form-button"> Send inn! </button>
+      <button type="submit" class="submit-form-button" ng-disabled="form.$invalid"> Send inn! </button>
     </form>
 
 
     <div class="yourRank">
-      Du kom på {{yourRank}}. plass
+      Du kom på {{yourRank}}. plass!
+
+      <div ng-click="tryAgain()">
+        <a href="#" class="js-modal-close close-x">
+          <img class="try-again-img-submited" src="../assets/tryagain.png" alt="Try again!">
+        </a>
+      </div>
+
     </div>
 
     <div class="modal-buttons">
+
+      <div class="yourPoints">
+        Du fikk <span id="buttonCounterFinish">0</span> poeng!
+      </div>
+
       <div ng-click="tryAgain()" class="try-again-modal">
         <a href="#" class="js-modal-close close-x">
           <img class="try-again-img" src="../assets/tryagain.png" alt="Try again!">
@@ -51,16 +100,14 @@
       <div ng-click="submitScore()" class="submit-score">
         <img class="submit-score-img" src="../assets/submit.png" alt="Submit score">
       </div>
-
     </div>
   </div>
 
-
-
+<div ng-show="isMobile()" class="game-wrapper">
 
   <div class="counter-wrapper">
     <div class="timer">
-      <span id="timer">50</span>
+      <span id="timer">300</span>
     </div>
     <div class="board-text">TIME</div>
 
@@ -68,21 +115,29 @@
     <div class="board-text">SCORE</div>
   </div>
 
-<!--   <div class="board-photo">
-    <img src="assets/board-photo.png" alt="" class="board-photo-img">
-  </div> -->
-
-  <span id="status">TRYKK FOR Å BEGYNNE!</span>
-
-  <button class="start-button">
-  <img src="assets/bax-knapp.svg" alt="Button is missing! Please report us!" class="start-button-svg">
-  </button>
-  <br>
 
 
-  <br>
-  <div id="timer" class="demo"></div>
-  <br>
+
+  <div class="game-graphic-wrapper">
+
+    <img src="assets/game-graphic-counter.png" alt="Image is missing!" class="game-graphic-counter-img">
+
+
+
+    <img src="assets/game-graphic-button.png" alt="Image is missing!" class="game-graphic-button-img">
+
+
+    <button data-role="button" class="start-button">
+
+      <img src="assets/button.png" alt="Button is missing! Please report us!" class="start-button-img">
+    </button>
+
+    <img src="assets/button-disable.png" alt="Button is missing! Please report us!" class="start-button-disable start-button-img">
+
+
+
+  </div>
+
   <div ng-click="tryAgain()" class="try-again">
     <img class="try-again-img" src="../assets/tryagain.png" alt="Try again!" >
   </div>
@@ -90,60 +145,43 @@
 
     <a href="#" data-modal-id="modal" class="js-open-modal"> </a>
 
-
-  <!-- Modal play again -->
-  <div id="modal" class="modal-box">
-
-    <div ng-click="tryAgain()">
-      <a href="#" class="js-modal-close close-x">CLOSE</a>
-    </div>
-
-    <form ng-submit="addScore()" class="submit-form">
-      <input ng-model="name" type="text" placeholder="Navn" class="submit-form-input"/>
-      <br>
-      <input ng-model="email" type="email" placeholder="E-post" class="submit-form-input"/>
-      <div ng-model="score" class=""></div>
-      <button type="submit" class="submit-form-button"> Send inn! </button>
-    </form>
-
-    <div class="modal-buttons">
-      <div class="yourRank">
-        <h1> HEY HEY!!! </h1>
-        Du kom på {{yourRank}}. plass
-      </div>
-
-    <div ng-click="tryAgain()" class="try-again-modal">
-      <a href="#" class="js-modal-close close-x">
-        <img class="try-again-img" src="../assets/tryagain.png" alt="Try again!">
-      </a>
-    </div>
-
-    </div>
-
-  </div>
+  <span id="status">TRYKK FOR Å BEGYNNE!</span>
 
 
-  <div class="highscores">
-    <h3> HIGHSCORE </h3>
+
+    <div class="highscores">
         <table class="rank-score-name">
         <tr>
-          <td>RANK</td>
-          <td>SCORE</td>
-          <td class="th-name">NAME</td>
+          <td class="highscores-header">PLASS</td>
+          <td class="highscores-header">POENG</td>
+          <td class="th-name highscores-header">NAVN</td>
         </tr>
       </table>
-    <div ng-repeat="score in scores.slice().reverse()" class="">
+    <div ng-repeat="score in scores.slice().reverse() | unique:'email' | first: 10""> <!-- unique:'scores.email' må ha Angular UI-->
       <table>
         <tr class="space-under">
-          <td>{{ $index + 1 }}</td>
-          <td> {{score.score}} </td>
-          <td class="th-name"> {{score.name}} </td>
+          <td class="highscores-row">{{ $index + 1 }}</td>
+          <td class="highscores-row"> {{score.score}} </td>
+          <td class="th-name highscores-row"> {{score.name}} </td>
         </tr>
 
       </table>
     </div>
+    <div class="goto-top100">
+      <a ng-href="/#/highscore">
+        Se topp 100 listen
+      </a>
+    </div>
   </div>
+</div> <!-- ng-show="isMobile()" -->
 
-</div>
+
+
+
+  <a ng-href="/#/info" class="info">
+    <img src="assets/info.png" alt="Information" class="info-img">
+  </a>
+
+</div> <!-- wrapper  -->
 
 </div>

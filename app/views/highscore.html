@@ -1,0 +1,30 @@
+<div ng-controller="mainCtrl">
+
+<div class="highcore-topp100-wrapper">
+
+  <img src="../assets/highscore.png" alt="HIGHSCORE" class="highscore-topp100">
+
+    <table class="highscores-top100">
+      <tr>
+        <td class="highscores-top100-small th-header">PLASS</td>
+        <td class="highscores-top100-small th-header">POENG</td>
+        <td class="highscores-top100-name th-header">NAVN</td>
+      </tr>
+    </table>
+  <div ng-repeat="score in scoresTop100.slice().reverse() | unique:'email' | first: 100">
+    <table class="highscores-top100">
+      <tr>
+        <td class="highscores-top100-small">{{ $index + 1 }}</td>
+        <td class="highscores-top100-small"> {{score.score}} </td>
+        <td class="highscores-top100-name"> {{score.name}} </td>
+      </tr>
+
+    </table>
+  </div>
+
+
+</div>
+
+
+
+</div>

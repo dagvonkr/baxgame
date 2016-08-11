@@ -1,7 +1,9 @@
-<!doctype html>
+<!DOCTYPE svg PUBLIC “-//W3C//DTD SVG 1.1//EN”
+“http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd”>
 <html>
   <head>
     <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>Hele Norges Knapp</title>
     <!-- styles -->
     <link rel="stylesheet" href="styles/main.css">
@@ -11,20 +13,35 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.1.0/jquery.min.js"></script>
     <script src="bower_components/jquery.transit/jquery.transit.js"></script>
     <script src="bower_components/angular/angular.js"></script>
-    <script src="bower_components/bootstrap/dist/js/bootstrap.js"></script>
+    <script src="node_modules/mobile-detect/mobile-detect.js"></script>
+    <script src="js/modernizr.js"></script>
     <script src="//www.gstatic.com/firebasejs/3.1.0/firebase-app.js"></script>
     <script src="//cdn.firebase.com/libs/angularfire/2.0.1/angularfire.min.js"></script>
     <script src="bower_components/angular-ui-router/release/angular-ui-router.js"></script>
     <script src="bower_components/angular-md5/angular-md5.js"></script>
     <script src="//www.gstatic.com/firebasejs/3.1.0/firebase-database.js"></script>
+    <script src="node_modules/jquery-touch-events/index.js"></script>
+    <script src="node_modules/angular-filter/dist/angular-filter.min.js"></script>
     <script>
       // Initialize Firebase
       var config = {
+        // Dear hacker: this API key will not give access to database :) --> https://groups.google.com/forum/#!topic/firebase-angular/DwAEZvB1QS4
         apiKey: "AIzaSyBCeqRWV9K7boyYGumlPiX_DjeKOnoItCI",
         authDomain: "baxgame.firebaseapp.com",
         databaseURL: "https://baxgame.firebaseio.com",
       };
       firebase.initializeApp(config);
+    </script>
+
+    <script>
+      (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+      (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+      m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+      })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+
+      ga('create', 'UA-81896027-1', 'auto');
+      ga('send', 'pageview');
+
     </script>
 
 
@@ -38,11 +55,11 @@
  -->
   <div class="main-wrapper">
 
-    <img src="../assets/vertical-border.svg" alt="" class="
+    <!-- <img src="../assets/vertical-border.svg" alt="" class="
     vertical-border-left">
     <img src="../assets/vertical-border.svg" alt="" class="vertical-border-right">
     <img src="../assets/horizontal-border.svg" alt="" class="horizontal-border-top">
-    <img src="../assets/horizontal-border.svg" alt="" class="horizontal-border-bottom">
+    <img src="../assets/horizontal-border.svg" alt="" class="horizontal-border-bottom"> -->
 
       <div ui-view> </div>
 
